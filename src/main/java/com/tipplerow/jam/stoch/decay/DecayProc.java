@@ -114,7 +114,7 @@ public final class DecayProc extends StochProc {
     }
 
     @Override public StochRate getStochRate() {
-        return StochRate.valueOf(population * rateConst);
+        return StochRate.of(population * rateConst);
     }
 
     @Override public String toString() {

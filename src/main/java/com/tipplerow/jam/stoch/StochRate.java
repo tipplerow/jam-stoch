@@ -71,7 +71,7 @@ public final class StochRate extends DomainDouble implements Comparable<StochRat
         for (StochRate rate : rates)
             total += rate.doubleValue();
 
-        return valueOf(total);
+        return of(total);
     }
 
     /**
@@ -84,7 +84,7 @@ public final class StochRate extends DomainDouble implements Comparable<StochRat
      * @throws IllegalArgumentException if the rate is
      * negative.
      */
-    public static StochRate valueOf(double value) {
+    public static StochRate of(double value) {
         if (DoubleComparator.DEFAULT.isZero(value))
             return ZERO;
         else

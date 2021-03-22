@@ -36,12 +36,12 @@ public final class StochTime extends DomainDouble implements Comparable<StochTim
     /**
      * A globally sharable instance representing zero time.
      */
-    public static final StochTime ZERO = valueOf(0.0);
+    public static final StochTime ZERO = of(0.0);
 
     /**
      * A globally sharable instance representing the end of time.
      */
-    public static final StochTime INFINITY = valueOf(Double.POSITIVE_INFINITY);
+    public static final StochTime INFINITY = of(Double.POSITIVE_INFINITY);
 
     /**
      * Creates a new time from a floating-point value.
@@ -53,7 +53,7 @@ public final class StochTime extends DomainDouble implements Comparable<StochTim
      * @throws IllegalArgumentException if the time is
      * negative.
      */
-    public static StochTime valueOf(double value) {
+    public static StochTime of(double value) {
         return new StochTime(value);
     }
 
@@ -67,7 +67,7 @@ public final class StochTime extends DomainDouble implements Comparable<StochTim
      * occurring {@code time} units after this time.
      */
     public StochTime plus(double time) {
-        return valueOf(this.doubleValue() + time);
+        return of(this.doubleValue() + time);
     }
 
     @Override public int compareTo(StochTime that) {

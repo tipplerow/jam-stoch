@@ -22,7 +22,6 @@ import com.tipplerow.jam.math.JamRandom;
 import com.tipplerow.jam.stoch.decay.DecayProc;
 import com.tipplerow.jam.stoch.decay.DecaySystem;
 
-import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public abstract class AlgoTestBase {

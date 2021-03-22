@@ -117,7 +117,7 @@ public final class RateManager {
      * stochastic system.
      */
     public StochRate getTotalRate() {
-        return StochRate.valueOf(totalRate);
+        return StochRate.of(totalRate);
     }
 
     /**

@@ -45,9 +45,9 @@ public class AgentSystemTest {
     @Test public void testUpdateState() {
         TestSystem system = TestSystem.create();
 
-        StochTime time1 = StochTime.valueOf(0.1);
-        StochTime time2 = StochTime.valueOf(0.3);
-        StochTime time3 = StochTime.valueOf(0.9);
+        StochTime time1 = StochTime.of(0.1);
+        StochTime time2 = StochTime.of(0.3);
+        StochTime time3 = StochTime.of(0.9);
 
         StochEvent event1 = StochEvent.mark(TestSystem.TRANS_PROC, time1);
         StochEvent event2 = StochEvent.mark(TestSystem.DEATH_PROC, time2);

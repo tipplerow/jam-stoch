@@ -37,7 +37,7 @@ public class PriorityListTest {
     private static final double SLOW_RATE = 1.0;
 
     // Total rate...
-    private static final StochRate TOTAL_RATE = StochRate.valueOf(10000.0);
+    private static final StochRate TOTAL_RATE = StochRate.of(10000.0);
 
     // Random number source...
     private static final JamRandom RANDOM = JamRandom.generator(20210501);
@@ -59,17 +59,12 @@ public class PriorityListTest {
         int trialCount = 1000000;
         int[] eventCounts = new int[procs.size()];
 
-        long millis = System.currentTimeMillis();
-
         PriorityList procList = PriorityList.create(procs);
 
         for (int trialIndex = 0; trialIndex < trialCount; ++trialIndex) {
             StochProc proc = procList.select(RANDOM, TOTAL_RATE);
             ++eventCounts[proc.getProcIndex()];
         }
-
-        millis = System.currentTimeMillis() - millis;
-        System.out.println(millis);
 
         for (int eventIndex = 0; eventIndex < SLOW_COUNT; ++eventIndex) {
             assertEquals(0.0001, DoubleUtil.ratio(eventCounts[eventIndex], trialCount), 0.00005);

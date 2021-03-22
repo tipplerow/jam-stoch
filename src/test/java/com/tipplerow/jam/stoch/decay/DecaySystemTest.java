@@ -35,17 +35,19 @@ public class DecaySystemTest extends NumericTestBase {
     }
 
     private void assertPopulation(DecaySystem system, int... pops) {
-        assertEquals(system.countProcesses(), pops.length);
+        List<DecayProc> procs = List.copyOf(system.viewProcesses());
+        assertEquals(procs.size(), pops.length);
 
-        for (int index = 0; index < pops.length; ++index)
-            assertEquals(pops[index], system.getProcess(index).getPopulation());
+        for (int index = 0; index < procs.size(); ++index)
+            assertEquals(procs.get(index).getPopulation(), pops[index]);
     }
 
     private void assertRates(DecaySystem system, double... rates) {
-        assertEquals(system.countProcesses(), rates.length);
+        List<DecayProc> procs = List.copyOf(system.viewProcesses());
+        assertEquals(procs.size(), rates.length);
 
-        for (int index = 0; index < rates.length; ++ index)
-            assertEquals(StochRate.valueOf(rates[index]), system.getProcess(index).getStochRate());
+        for (int index = 0; index < procs.size(); ++index)
+            assertEquals(procs.get(index).getStochRate(), StochRate.of(rates[index]));
     }
 
     @Test public void testEvent() {
@@ -56,19 +58,16 @@ public class DecaySystemTest extends NumericTestBase {
         DecayProc proc1 = procs.get(1);
         DecayProc proc2 = procs.get(2);
 
-        System.out.println(procs);
-
         assertPopulation(system, 100, 200, 300);
         assertRates(system, 100.0, 400.0, 900.0);
 
-        system.updateState(StochEvent.mark(proc0, StochTime.valueOf(0.1)));
-        system.updateState(StochEvent.mark(proc1, StochTime.valueOf(0.2)));
-        system.updateState(StochEvent.mark(proc1, StochTime.valueOf(0.3)));
-        system.updateState(StochEvent.mark(proc2, StochTime.valueOf(0.4)));
-        system.updateState(StochEvent.mark(proc2, StochTime.valueOf(0.5)));
-        system.updateState(StochEvent.mark(proc2, StochTime.valueOf(0.6)));
+        system.updateState(StochEvent.mark(proc0, StochTime.of(0.1)));
+        system.updateState(StochEvent.mark(proc1, StochTime.of(0.2)));
+        system.updateState(StochEvent.mark(proc1, StochTime.of(0.3)));
+        system.updateState(StochEvent.mark(proc2, StochTime.of(0.4)));
+        system.updateState(StochEvent.mark(proc2, StochTime.of(0.5)));
+        system.updateState(StochEvent.mark(proc2, StochTime.of(0.6)));
 
-        System.out.println(procs);
         assertPopulation(system, 99, 198, 297);
         assertRates(system, 99.0, 396.0, 891.0);
     }

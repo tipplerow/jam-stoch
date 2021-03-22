@@ -80,7 +80,7 @@ public abstract class AgentProc extends StochProc {
      */
     public static StochRate computeRate(double rateConst, int agentCount) {
         validateRateConstant(rateConst);
-        return StochRate.valueOf(rateConst * agentCount);
+        return StochRate.of(rateConst * agentCount);
     }
 
     /**
@@ -100,7 +100,7 @@ public abstract class AgentProc extends StochProc {
      */
     public static StochRate computeRate(double rateConst, int agent1Count, int agent2Count) {
         validateRateConstant(rateConst);
-        return StochRate.valueOf(rateConst * agent1Count * agent2Count);
+        return StochRate.of(rateConst * agent1Count * agent2Count);
     }
 
     /**
@@ -172,7 +172,7 @@ public abstract class AgentProc extends StochProc {
         for (StochAgent reactant : getReactants())
             rate *= system.countAgent(reactant);
 
-        return StochRate.valueOf(rate);
+        return StochRate.of(rate);
     }
 
     /**

@@ -64,7 +64,7 @@ public abstract class StochProc extends Ordinal {
         for (StochProc proc : procs)
             totalRate += proc.getStochRate().doubleValue();
 
-        return StochRate.valueOf(totalRate);
+        return StochRate.of(totalRate);
     }
 
     /**

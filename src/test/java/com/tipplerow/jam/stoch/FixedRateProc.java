@@ -19,7 +19,7 @@ final class FixedRateProc extends StochProc {
     private final StochRate rate;
 
     private FixedRateProc(double rate) {
-        this.rate = StochRate.valueOf(rate);
+        this.rate = StochRate.of(rate);
     }
 
     static FixedRateProc create(double rate) {

@@ -26,10 +26,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class StochRateTest {
-    private static final StochRate rate1 = StochRate.valueOf(1.0);
-    private static final StochRate rate2 = StochRate.valueOf(2.0);
-    private static final StochRate rate3 = StochRate.valueOf(3.0);
-    private static final StochRate rate4 = StochRate.valueOf(4.0);
+    private static final StochRate rate1 = StochRate.of(1.0);
+    private static final StochRate rate2 = StochRate.of(2.0);
+    private static final StochRate rate3 = StochRate.of(3.0);
+    private static final StochRate rate4 = StochRate.of(4.0);
 
     @Test public void testComparators() {
         List<StochRate> rates = new ArrayList<>();
@@ -60,7 +60,7 @@ public class StochRateTest {
     }
 
     @Test public void testTotal() {
-        assertEquals(StochRate.valueOf(10.0), StochRate.total(List.of(rate1, rate2, rate3, rate4)));
-        assertEquals(StochRate.valueOf(10.0), StochRate.total(List.of(rate4, rate3, rate2, rate1)));
+        assertEquals(StochRate.of(10.0), StochRate.total(List.of(rate1, rate2, rate3, rate4)));
+        assertEquals(StochRate.of(10.0), StochRate.total(List.of(rate4, rate3, rate2, rate1)));
     }
 }
